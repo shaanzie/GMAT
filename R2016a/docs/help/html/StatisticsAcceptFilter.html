@@ -1,0 +1,103 @@
+<html><head><META http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"><title>StatisticsAcceptFilter</title><link href="../files/style.css" type="text/css" rel="stylesheet"><meta content="DocBook XSL Stylesheets V1.78.1" name="generator"><link rel="home" href="index.html" title="General Mission Analysis Tool (GMAT)"><link rel="up" href="Resources.html" title="Resources"><link rel="prev" href="SpacecraftVisualizationProperties.html" title="Spacecraft Visualization Properties"><link rel="next" href="StatisticsRejectFilter.html" title="StatisticsRejectFilter"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="navheader"><table summary="Navigation header" width="100%"><tr><th align="center" colspan="3">StatisticsAcceptFilter</th></tr><tr><td align="left" width="20%"><a accesskey="p" href="SpacecraftVisualizationProperties.html">Prev</a>&nbsp;</td><th align="center" width="60%">Resources</th><td align="right" width="20%">&nbsp;<a accesskey="n" href="StatisticsRejectFilter.html">Next</a></td></tr></table><hr></div><div class="refentry"><a name="StatisticsAcceptFilter"></a><div class="titlepage"></div><a name="N207AE" class="indexterm"></a><div class="refnamediv"><h2><span class="refentrytitle">StatisticsAcceptFilter</span></h2><p>StatisticsAcceptFilter &mdash; Allows selection of data subsets for processing by the batch
+    least squares estimator.</p></div><div class="refsection"><a name="N207BF"></a><h2>Description</h2><p>The <span class="guilabel">StatisticsAcceptFilter</span> object is used to
+    create criteria for the inclusion of subsets of the available data in the
+    estimation process based on observation frequency, tracker, measurement
+    type, or time. Instances of <span class="guilabel">StatisticsAcceptFilter</span>
+    are specified for use on the <span class="guilabel">DataFilters</span> field of a
+    <span class="guibutton">TrackingFileSet</span> object. A single
+    <span class="guilabel">StatisticsAcceptFilter</span> may employ multiple selection
+    criteria (for example simultaneously thinning different stations or data
+    types by differing intervals). Multiple criteria on a single filter are
+    considered in an AND sense. When multiple criteria are specified on a
+    single filter, an observation must meet all specified criteria to be
+    accepted.</p><p>Multiple <span class="guilabel">StatisticsAcceptFilters</span> with different
+    selection criteria may be specified on a single
+    <span class="guilabel">TrackingFileSet</span>. When multiple filters are specified,
+    these act in an OR sense. Data meeting criteria for any of the specified
+    filters will be accepted.</p><p>See Also <a class="xref" href="StatisticsRejectFilter.html" title="StatisticsRejectFilter"><span class="refentrytitle">StatisticsRejectFilter</span></a>, <a class="xref" href="TrackingFileSet.html" title="TrackingFileSet"><span class="refentrytitle">TrackingFileSet</span></a></p></div><div class="refsection"><a name="N207E2"></a><h2>Fields</h2><div class="informaltable"><table border="1"><colgroup><col width="25%"><col width="75%"></colgroup><thead><tr><th>Field</th><th>Description</th></tr></thead><tbody><tr><td><span class="guilabel">DataTypes</span></td><td><p>List of data types</p> <div class="variablelist"><table border="0" class="variablelist"><colgroup><col valign="top" align="left"><col></colgroup><tbody><tr><td><p><span class="term">Data Type</span></p></td><td><p>String Array</p></td></tr><tr><td><p><span class="term">Allowed Values</span></p></td><td><p>Range_RU, Doppler_Hz, or All</p></td></tr><tr><td><p><span class="term">Access</span></p></td><td><p>set</p></td></tr><tr><td><p><span class="term">Default Value</span></p></td><td><p>
+                      <span class="guilabel">{All}</span>
+                    </p></td></tr><tr><td><p><span class="term">Units</span></p></td><td><p>N/A</p></td></tr><tr><td><p><span class="term">Interfaces</span></p></td><td><p>script</p></td></tr></tbody></table></div></td></tr><tr><td><span class="guilabel">EpochFormat</span></td><td><p>Allows user to select format of the epoch</p>
+            <div class="variablelist"><table border="0" class="variablelist"><colgroup><col valign="top" align="left"><col></colgroup><tbody><tr><td><p><span class="term">Data Type</span></p></td><td><p>String</p></td></tr><tr><td><p><span class="term">Allowed Values</span></p></td><td><p>UTCGregorian, UTCModJulian, TAIGregorian,
+                    TAIModJulian, TTGregorian, TTModJulian A1Gregorian,
+                    A1ModJulian, TDBGregorian, TDBModJulian</p></td></tr><tr><td><p><span class="term">Access</span></p></td><td><p>set</p></td></tr><tr><td><p><span class="term">Default Value</span></p></td><td><p>
+                      <span class="guilabel">TAIModJulian</span>
+                    </p></td></tr><tr><td><p><span class="term">Units</span></p></td><td><p>N/A</p></td></tr><tr><td><p><span class="term">Interfaces</span></p></td><td><p>script</p></td></tr></tbody></table></div></td></tr><tr><td><span class="guilabel">InitialEpoch</span></td><td><p>Initial epoch of desired data to process</p>
+            <div class="variablelist"><table border="0" class="variablelist"><colgroup><col valign="top" align="left"><col></colgroup><tbody><tr><td><p><span class="term">Data Type</span></p></td><td><p>String</p></td></tr><tr><td><p><span class="term">Allowed Values</span></p></td><td><p>any valid epoch</p></td></tr><tr><td><p><span class="term">Access</span></p></td><td><p>set</p></td></tr><tr><td><p><span class="term">Default Value</span></p></td><td><p>
+                      <span class="guilabel">earliest day defined in GMAT</span>
+                    </p></td></tr><tr><td><p><span class="term">Units</span></p></td><td><p>N/A</p></td></tr><tr><td><p><span class="term">Interfaces</span></p></td><td><p>script</p></td></tr></tbody></table></div></td></tr><tr><td><span class="guilabel">FinalEpoch</span></td><td><p>Final epoch of desired data to process</p>
+            <div class="variablelist"><table border="0" class="variablelist"><colgroup><col valign="top" align="left"><col></colgroup><tbody><tr><td><p><span class="term">Data Type</span></p></td><td><p>String</p></td></tr><tr><td><p><span class="term">Allowed Values</span></p></td><td><p>any valid epoch</p></td></tr><tr><td><p><span class="term">Access</span></p></td><td><p>set</p></td></tr><tr><td><p><span class="term">Default Value</span></p></td><td><p>
+                      <span class="guilabel">latest day defined in GMAT</span>
+                    </p></td></tr><tr><td><p><span class="term">Units</span></p></td><td><p>N/A</p></td></tr><tr><td><p><span class="term">Interfaces</span></p></td><td><p>script</p></td></tr></tbody></table></div></td></tr><tr><td><span class="guilabel">FileNames</span></td><td><p>List of file names (a subset of the relevant
+            <span class="guilabel">TrackingFileSet's</span>
+            <span class="guilabel">FileName</span> field) containing the tracking data.
+            If this field equals From_AddTrackingConfig, then two things
+            happen; (1) All of the files in the relevant
+            <span class="guilabel">TrackingFileSet</span> are used as a starting point,
+            and (2) Of the data in all of the files, only the data defined by
+            the <span class="guilabel">AddTrackingConfig</span> field of the relevant
+            <span class="guilabel">TrackingFileSet</span> are used. </p>
+            <div class="variablelist"><table border="0" class="variablelist"><colgroup><col valign="top" align="left"><col></colgroup><tbody><tr><td><p><span class="term">Data Type</span></p></td><td><p>StringArray</p></td></tr><tr><td><p><span class="term">Allowed Values</span></p></td><td><p>valid file name, 'All', or
+                    'From_AddTrackingConfig'</p></td></tr><tr><td><p><span class="term">Access</span></p></td><td><p>set</p></td></tr><tr><td><p><span class="term">Default Value</span></p></td><td><p>
+                      <span class="guilabel">{All}</span>
+                    </p></td></tr><tr><td><p><span class="term">Units</span></p></td><td><p>N/A</p></td></tr><tr><td><p><span class="term">Interfaces</span></p></td><td><p>script</p></td></tr></tbody></table></div></td></tr><tr><td><span class="guilabel">ObservedObjects</span></td><td><p>List of user-created tracked objects (e.g., name of
+            the <span class="guilabel">Spacecraft</span> resource being tracked)</p>
+            <div class="variablelist"><table border="0" class="variablelist"><colgroup><col valign="top" align="left"><col></colgroup><tbody><tr><td><p><span class="term">Data Type</span></p></td><td><p>Object Array</p></td></tr><tr><td><p><span class="term">Allowed Values</span></p></td><td><p>User defined observed object or 'All'</p></td></tr><tr><td><p><span class="term">Access</span></p></td><td><p>set</p></td></tr><tr><td><p><span class="term">Default Value</span></p></td><td><p>
+                      <span class="guilabel">{All}</span>
+                    </p></td></tr><tr><td><p><span class="term">Units</span></p></td><td><p>N/A</p></td></tr><tr><td><p><span class="term">Interfaces</span></p></td><td><p>script</p></td></tr></tbody></table></div></td></tr><tr><td><span class="guilabel">Trackers</span></td><td><p>List of user-created trackers (e.g., name of the
+            <span class="guilabel">GroundStation</span> resource being used) </p>
+            <div class="variablelist"><table border="0" class="variablelist"><colgroup><col valign="top" align="left"><col></colgroup><tbody><tr><td><p><span class="term">Data Type</span></p></td><td><p>Object Array</p></td></tr><tr><td><p><span class="term">Allowed Values</span></p></td><td><p>any valid user-created Tracker object (e.g.,
+                    <span class="guilabel">GroundStation</span>) or 'All'</p></td></tr><tr><td><p><span class="term">Access</span></p></td><td><p>set</p></td></tr><tr><td><p><span class="term">Default Value</span></p></td><td><p>
+                      <span class="guilabel">{All}</span>
+                    </p></td></tr><tr><td><p><span class="term">Units</span></p></td><td><p>N/A</p></td></tr><tr><td><p><span class="term">Interfaces</span></p></td><td><p>script</p></td></tr></tbody></table></div></td></tr><tr><td><span class="guilabel">ThinningFrequency</span></td><td><p>If <span class="guilabel">ThinMode</span> is Frequency, the
+            integer 'n' is used to specify that every nth data point should be
+            accepted. For example, 3 specifies that every third data point,
+            meeting all the accept criteria, should be accepted and 1
+            specifies that every data point, meeting all the accept criteria,
+            should be accepted. If <span class="guilabel">ThinMode</span> is Time, the
+            integer 'n' is a number of seconds between accepted observations,
+            using the first available observation as the anchor epoch. For
+            example, a value of 300 means that observations will be accepted
+            every 300 seconds, starting from the first available
+            observation.</p> <div class="variablelist"><table border="0" class="variablelist"><colgroup><col valign="top" align="left"><col></colgroup><tbody><tr><td><p><span class="term">Data Type</span></p></td><td><p>Integer</p></td></tr><tr><td><p><span class="term">Allowed Values</span></p></td><td><p>Positive Integer</p></td></tr><tr><td><p><span class="term">Access</span></p></td><td><p>set</p></td></tr><tr><td><p><span class="term">Default Value</span></p></td><td><p>
+                      <span class="guilabel">1</span>
+                    </p></td></tr><tr><td><p><span class="term">Units</span></p></td><td><p>Depends on <span class="guilabel">ThinMode</span>
+                    value</p></td></tr><tr><td><p><span class="term">Interfaces</span></p></td><td><p>script</p></td></tr></tbody></table></div></td></tr><tr><td><span class="guilabel">ThinMode</span></td><td><p>"Frequency" for record count frequency mode and
+            "Time" for time window frequency mode</p> <div class="variablelist"><table border="0" class="variablelist"><colgroup><col valign="top" align="left"><col></colgroup><tbody><tr><td><p><span class="term">Data Type</span></p></td><td><p>String</p></td></tr><tr><td><p><span class="term">Allowed Values</span></p></td><td><p>"Frequency" or "Time"</p></td></tr><tr><td><p><span class="term">Access</span></p></td><td><p>set</p></td></tr><tr><td><p><span class="term">Default Value</span></p></td><td><p>
+                      <span class="guilabel">Frequency</span>
+                    </p></td></tr><tr><td><p><span class="term">Units</span></p></td><td><p>N/A</p></td></tr><tr><td><p><span class="term">Interfaces</span></p></td><td><p>script</p></td></tr></tbody></table></div></td></tr></tbody></table></div></div><div class="refsection"><a name="N209C8"></a><h2>Examples</h2><div class="informalexample"><p>The <span class="guilabel">StatisticsAcceptFilter</span> object should be
+      assigned to the <span class="guilabel">DataFilters</span> field of a
+      <span class="guilabel">TrackingFileSet</span>. This example shows how to create a
+      <span class="guilabel">StatisticsAcceptFilter</span> to sample the data at a
+      frequency of 1:10 (thinning the data to one tenth of its volume).</p><pre class="programlisting">Create StatisticsAcceptFilter saf;
+  
+saf.ThinningFrequency = 10;
+
+Create TrackingFileSet estData;
+
+estData.DataFilters = {saf};
+BeginMissionSequence;</pre></div><div class="informalexample"><p>The next example will accept all data from station
+      <span class="guilabel">GDS</span> and accept every 5th observation from station
+      <span class="guilabel">CAN</span>. Only data from stations
+      <span class="guilabel">GDS</span> and <span class="guilabel">CAN</span> will be
+      accepted.</p><pre class="programlisting">Create StatisticsAcceptFilter saf1;
+Create StatisticsAcceptFilter saf2;
+ 
+Create GroundStation GDS CAN;
+
+saf1.Trackers          = {'GDS'}; 
+saf2.Trackers          = {'CAN'};
+saf2.ThinningFrequency = 5;
+ 
+Create TrackingFileSet estData;
+ 
+estData.DataFilters = {saf1, saf2};
+BeginMissionSequence;</pre></div><div class="informalexample"><p>The last example illustrates thinning data by time interval, using
+      a 300-second thinning interval.</p><pre class="programlisting">Create StatisticsAcceptFilter saf;
+ 
+saf.ThinMode          = 'Time'; 
+saf.ThinningFrequency = 300;
+ 
+Create TrackingFileSet estData;
+ 
+estData.DataFilters = {saf};
+BeginMissionSequence;</pre></div></div></div><div class="navfooter"><hr><table summary="Navigation footer" width="100%"><tr><td align="left" width="40%"><a accesskey="p" href="SpacecraftVisualizationProperties.html">Prev</a>&nbsp;</td><td align="center" width="20%"><a accesskey="u" href="Resources.html">Up</a></td><td align="right" width="40%">&nbsp;<a accesskey="n" href="StatisticsRejectFilter.html">Next</a></td></tr><tr><td valign="top" align="left" width="40%">Spacecraft Visualization Properties&nbsp;</td><td align="center" width="20%"><a accesskey="h" href="index.html">Home</a></td><td valign="top" align="right" width="40%">&nbsp;StatisticsRejectFilter</td></tr></table></div></body></html>

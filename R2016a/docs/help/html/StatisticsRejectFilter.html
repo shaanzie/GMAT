@@ -1,0 +1,57 @@
+<html><head><META http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"><title>StatisticsRejectFilter</title><link href="../files/style.css" type="text/css" rel="stylesheet"><meta content="DocBook XSL Stylesheets V1.78.1" name="generator"><link rel="home" href="index.html" title="General Mission Analysis Tool (GMAT)"><link rel="up" href="Resources.html" title="Resources"><link rel="prev" href="StatisticsAcceptFilter.html" title="StatisticsAcceptFilter"><link rel="next" href="String.html" title="String"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="navheader"><table summary="Navigation header" width="100%"><tr><th align="center" colspan="3">StatisticsRejectFilter</th></tr><tr><td align="left" width="20%"><a accesskey="p" href="StatisticsAcceptFilter.html">Prev</a>&nbsp;</td><th align="center" width="60%">Resources</th><td align="right" width="20%">&nbsp;<a accesskey="n" href="String.html">Next</a></td></tr></table><hr></div><div class="refentry"><a name="StatisticsRejectFilter"></a><div class="titlepage"></div><a name="N209F6" class="indexterm"></a><div class="refnamediv"><h2><span class="refentrytitle">StatisticsRejectFilter</span></h2><p>StatisticsRejectFilter &mdash; Allows selection of data subsets for processing by the batch
+    least squares estimator.</p></div><div class="refsection"><a name="N20A07"></a><h2>Description</h2><p>The <span class="guilabel">StatisticsRejectFilter</span> object is used to
+    create criteria for the exclusion of subsets of the available data in the
+    estimation process based on tracker, observed object, measurement type, or
+    time. A single <span class="guilabel">StatisticsRejectFilter</span> may employ
+    multiple selection criteria (for example simultaneous thinning by time and
+    tracker). Multiple criteria on a single filter are considered in an AND
+    sense. When multiple criteria are specified in a single filter, an
+    observation must meet all specified criteria to be rejected.</p><p>Instances of <span class="guilabel">StatisticsRejectFilter</span> are
+    specified for use on the <span class="guilabel">DataFilters</span> field of a
+    <span class="guilabel">TrackingFileSet</span> object. Multiple filters with
+    different selection criteria may be specified on a single
+    <span class="guilabel">TrackingFileSet</span>. When multiple filters are specified,
+    these act in an OR sense. Data meeting criteria for any of the specified
+    filters will be rejected.</p><p>See Also <a class="xref" href="StatisticsAcceptFilter.html" title="StatisticsAcceptFilter"><span class="refentrytitle">StatisticsAcceptFilter</span></a>, <a class="xref" href="TrackingFileSet.html" title="TrackingFileSet"><span class="refentrytitle">TrackingFileSet</span></a></p></div><div class="refsection"><a name="N20A27"></a><h2>Fields</h2><div class="informaltable"><table border="1"><colgroup><col width="25%"><col width="75%"></colgroup><thead><tr><th>Field</th><th>Description</th></tr></thead><tbody><tr><td><span class="guilabel">DataTypes</span></td><td><p>List of data types</p><div class="variablelist"><table border="0" class="variablelist"><colgroup><col valign="top" align="left"><col></colgroup><tbody><tr><td><p><span class="term">Data Type</span></p></td><td><p>String Array</p></td></tr><tr><td><p><span class="term">Allowed Values</span></p></td><td><p>Range_RU, Doppler_Hz, or All</p></td></tr><tr><td><p><span class="term">Access</span></p></td><td><p>set</p></td></tr><tr><td><p><span class="term">Default Value</span></p></td><td><p><span class="guilabel">{All}</span></p></td></tr><tr><td><p><span class="term">Units</span></p></td><td><p>N/A</p></td></tr><tr><td><p><span class="term">Interfaces</span></p></td><td><p>script</p></td></tr></tbody></table></div></td></tr><tr><td><span class="guilabel">EpochFormat</span></td><td><p>Allows user to select format of the
+            epoch</p><div class="variablelist"><table border="0" class="variablelist"><colgroup><col valign="top" align="left"><col></colgroup><tbody><tr><td><p><span class="term">Data Type</span></p></td><td><p>String</p></td></tr><tr><td><p><span class="term">Allowed Values</span></p></td><td><p>UTCGregorian, UTCModJulian, TAIGregorian,
+                    TAIModJulian, TTGregorian, TTModJulian A1Gregorian,
+                    A1ModJulian, TDBGregorian, TDBModJulian</p></td></tr><tr><td><p><span class="term">Access</span></p></td><td><p>set</p></td></tr><tr><td><p><span class="term">Default Value</span></p></td><td><p><span class="guilabel">TAIModJulian</span></p></td></tr><tr><td><p><span class="term">Units</span></p></td><td><p>N/A</p></td></tr><tr><td><p><span class="term">Interfaces</span></p></td><td><p>script</p></td></tr></tbody></table></div></td></tr><tr><td><span class="guilabel">InitialEpoch</span></td><td><p>Initial epoch of desired data to
+            process</p><div class="variablelist"><table border="0" class="variablelist"><colgroup><col valign="top" align="left"><col></colgroup><tbody><tr><td><p><span class="term">Data Type</span></p></td><td><p>String</p></td></tr><tr><td><p><span class="term">Allowed Values</span></p></td><td><p>any valid epoch</p></td></tr><tr><td><p><span class="term">Access</span></p></td><td><p>set</p></td></tr><tr><td><p><span class="term">Default Value</span></p></td><td><p><span class="guilabel">earliest day defined in
+                    GMAT</span></p></td></tr><tr><td><p><span class="term">Units</span></p></td><td><p>N/A</p></td></tr><tr><td><p><span class="term">Interfaces</span></p></td><td><p>script</p></td></tr></tbody></table></div></td></tr><tr><td><span class="guilabel">FinalEpoch</span></td><td><p>Final epoch of desired data to
+            process</p><div class="variablelist"><table border="0" class="variablelist"><colgroup><col valign="top" align="left"><col></colgroup><tbody><tr><td><p><span class="term">Data Type</span></p></td><td><p>String</p></td></tr><tr><td><p><span class="term">Allowed Values</span></p></td><td><p>any valid epoch</p></td></tr><tr><td><p><span class="term">Access</span></p></td><td><p>set</p></td></tr><tr><td><p><span class="term">Default Value</span></p></td><td><p><span class="guilabel">latest day defined in
+                    GMAT</span></p></td></tr><tr><td><p><span class="term">Units</span></p></td><td><p>N/A</p></td></tr><tr><td><p><span class="term">Interfaces</span></p></td><td><p>script</p></td></tr></tbody></table></div></td></tr><tr><td><span class="guilabel">FileNames</span></td><td><p>List of file names (a subset of the relevant
+            <span class="guilabel">TrackingFileSet's</span>
+            <span class="guilabel">FileName</span> field) containing the tracking data,
+            to be excluded from processing. </p><div class="variablelist"><table border="0" class="variablelist"><colgroup><col valign="top" align="left"><col></colgroup><tbody><tr><td><p><span class="term">Data Type</span></p></td><td><p>StringArray</p></td></tr><tr><td><p><span class="term">Allowed Values</span></p></td><td><p>valid file name or 'All'</p></td></tr><tr><td><p><span class="term">Access</span></p></td><td><p>set</p></td></tr><tr><td><p><span class="term">Default Value</span></p></td><td><p><span class="guilabel">{All}</span></p></td></tr><tr><td><p><span class="term">Units</span></p></td><td><p>N/A</p></td></tr><tr><td><p><span class="term">Interfaces</span></p></td><td><p>script</p></td></tr></tbody></table></div></td></tr><tr><td><span class="guilabel">ObservedObjects</span></td><td><p>List of user-created tracked objects (e.g., name of
+            the <span class="guilabel">Spacecraft</span> resource being
+            tracked)</p><div class="variablelist"><table border="0" class="variablelist"><colgroup><col valign="top" align="left"><col></colgroup><tbody><tr><td><p><span class="term">Data Type</span></p></td><td><p>Object Array</p></td></tr><tr><td><p><span class="term">Allowed Values</span></p></td><td><p>User defined observed object or 'All'</p></td></tr><tr><td><p><span class="term">Access</span></p></td><td><p>set</p></td></tr><tr><td><p><span class="term">Default Value</span></p></td><td><p><span class="guilabel">{All}</span></p></td></tr><tr><td><p><span class="term">Units</span></p></td><td><p>N/A</p></td></tr><tr><td><p><span class="term">Interfaces</span></p></td><td><p>script</p></td></tr></tbody></table></div></td></tr><tr><td><span class="guilabel">Trackers</span></td><td><p>List of user-created trackers (e.g., name of the
+            <span class="guilabel">GroundStation</span> resource being used)
+            </p><div class="variablelist"><table border="0" class="variablelist"><colgroup><col valign="top" align="left"><col></colgroup><tbody><tr><td><p><span class="term">Data Type</span></p></td><td><p>Object Array</p></td></tr><tr><td><p><span class="term">Allowed Values</span></p></td><td><p>any valid user-created Tracker object (e.g.,
+                    <span class="guilabel">GroundStation</span>) or 'All'</p></td></tr><tr><td><p><span class="term">Access</span></p></td><td><p>set</p></td></tr><tr><td><p><span class="term">Default Value</span></p></td><td><p><span class="guilabel">{All}</span></p></td></tr><tr><td><p><span class="term">Units</span></p></td><td><p>N/A</p></td></tr><tr><td><p><span class="term">Interfaces</span></p></td><td><p>script</p></td></tr></tbody></table></div></td></tr></tbody></table></div></div><div class="refsection"><a name="N20B86"></a><h2>Examples</h2><div class="informalexample"><p>The <span class="guilabel">StatisticsRejectFilter</span> object should be
+      assigned to the <span class="guilabel">DataFilters</span> field of a
+      <span class="guilabel">TrackingFileSet</span>. This example shows how to create a
+      <span class="guilabel">StatisticsRejectFilter</span> to reject all observations
+      from station <span class="guilabel">GDS</span>.</p><pre class="programlisting">Create GroundStation GDS;
+
+Create StatisticsRejectFilter srf;
+srf.Trackers        = {'GDS'};
+ 
+Create TrackingFileSet estData;
+ 
+estData.DataFilters = {srf};
+BeginMissionSequence;</pre></div><div class="informalexample"><p>The next example will reject all DSN Doppler (i.e., Doppler_HZ)
+      tracking measurements from station <span class="guilabel">GDS</span>, and all
+      tracking of any type from station <span class="guilabel">CAN</span>. All other
+      tracking measurements will be accepted.</p><pre class="programlisting">Create GroundStation GDS CAN;
+
+Create StatisticsRejectFilter srf1;
+Create StatisticsRejectFilter srf2;
+ 
+srf1.Trackers       = {'GDS'}; 
+srf1.DataTypes      = {'Doppler_HZ'};
+srf2.Trackers       = {'CAN'};
+ 
+Create TrackingFileSet estData;
+ 
+estData.DataFilters = {srf1, srf2};
+BeginMissionSequence;</pre></div></div></div><div class="navfooter"><hr><table summary="Navigation footer" width="100%"><tr><td align="left" width="40%"><a accesskey="p" href="StatisticsAcceptFilter.html">Prev</a>&nbsp;</td><td align="center" width="20%"><a accesskey="u" href="Resources.html">Up</a></td><td align="right" width="40%">&nbsp;<a accesskey="n" href="String.html">Next</a></td></tr><tr><td valign="top" align="left" width="40%">StatisticsAcceptFilter&nbsp;</td><td align="center" width="20%"><a accesskey="h" href="index.html">Home</a></td><td valign="top" align="right" width="40%">&nbsp;String</td></tr></table></div></body></html>
