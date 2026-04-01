@@ -1,0 +1,27 @@
+<html><head><META http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"><title>Create and configure force model and propagator</title><link href="../files/style.css" type="text/css" rel="stylesheet"><meta content="DocBook XSL Stylesheets V1.78.1" name="generator"><link rel="home" href="index.html" title="General Mission Analysis Tool (GMAT)"><link rel="up" href="Tut_Simulate_and_Estimate_Inter_Spacecraft_DSN_Range_and_Doppler_Data.html" title="Chapter&nbsp;16.&nbsp;Simulate and Estimate Inter-Spacecraft Tracking"><link rel="prev" href="Define_the_types_of_measurements_to_be_simulated_and_their_associated_error_models.html" title="Define the types of measurements to be simulated and their associated error models"><link rel="next" href="Create_and_configure_simulator_and_batch_estimator_Objects.html" title="Create and configure the simulator and batch estimator objects"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="navheader"><table summary="Navigation header" width="100%"><tr><th align="center" colspan="3">Create and configure force model and propagator</th></tr><tr><td align="left" width="20%"><a accesskey="p" href="Define_the_types_of_measurements_to_be_simulated_and_their_associated_error_models.html">Prev</a>&nbsp;</td><th align="center" width="60%">Chapter&nbsp;16.&nbsp;Simulate and Estimate Inter-Spacecraft Tracking</th><td align="right" width="20%">&nbsp;<a accesskey="n" href="Create_and_configure_simulator_and_batch_estimator_Objects.html">Next</a></td></tr></table><hr></div><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="Create_and_configure_force_model_and_propagator"></a>Create and configure force model and propagator</h2></div></div></div><p>We now create and configure the force model and propagator that will
+    be used for the simulation. For this constellation, we are using
+    simplified force modeling, just accounting for the Earth's gravitational
+    effect, and disabling the modeling of solar radiation pressure and drag.
+    The script segment accomplishing this is shown below.</p><pre class="programlisting">%
+%   Propagator and force model
+%
+
+Create ForceModel FM
+
+FM.CentralBody  = Earth
+FM.PointMasses  = {Earth}
+FM.Drag         = None
+FM.SRP          = Off
+FM.ErrorControl = None
+
+Create Propagator Prop
+
+Prop.FM              = FM
+Prop.Type            = 'RungeKutta56'
+Prop.InitialStepSize = 60
+Prop.Accuracy        = 1e-13
+Prop.MinStep         = 0
+Prop.MaxStep         = 60
+Prop.MaxStepAttempts = 50</pre></div><div class="navfooter"><hr><table summary="Navigation footer" width="100%"><tr><td align="left" width="40%"><a accesskey="p" href="Define_the_types_of_measurements_to_be_simulated_and_their_associated_error_models.html">Prev</a>&nbsp;</td><td align="center" width="20%"><a accesskey="u" href="Tut_Simulate_and_Estimate_Inter_Spacecraft_DSN_Range_and_Doppler_Data.html">Up</a></td><td align="right" width="40%">&nbsp;<a accesskey="n" href="Create_and_configure_simulator_and_batch_estimator_Objects.html">Next</a></td></tr><tr><td valign="top" align="left" width="40%">Define the types of measurements to be simulated and their
+    associated error models&nbsp;</td><td align="center" width="20%"><a accesskey="h" href="index.html">Home</a></td><td valign="top" align="right" width="40%">&nbsp;Create and configure the simulator and batch estimator
+    objects</td></tr></table></div></body></html>

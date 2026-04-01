@@ -1,0 +1,115 @@
+<html><head><META http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"><title>Run the mission and review the output</title><link href="../files/style.css" type="text/css" rel="stylesheet"><meta content="DocBook XSL Stylesheets V1.78.1" name="generator"><link rel="home" href="index.html" title="General Mission Analysis Tool (GMAT)"><link rel="up" href="Tut_Simulate_and_Estimate_Inter_Spacecraft_DSN_Range_and_Doppler_Data.html" title="Chapter&nbsp;16.&nbsp;Simulate and Estimate Inter-Spacecraft Tracking"><link rel="prev" href="Create_and_configure_simulator_and_batch_estimator_Objects.html" title="Create and configure the simulator and batch estimator objects"><link rel="next" href="ch16s07.html" title="References"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="navheader"><table summary="Navigation header" width="100%"><tr><th align="center" colspan="3">Run the mission and review the output</th></tr><tr><td align="left" width="20%"><a accesskey="p" href="Create_and_configure_simulator_and_batch_estimator_Objects.html">Prev</a>&nbsp;</td><th align="center" width="60%">Chapter&nbsp;16.&nbsp;Simulate and Estimate Inter-Spacecraft Tracking</th><td align="right" width="20%">&nbsp;<a accesskey="n" href="ch16s07.html">Next</a></td></tr></table><hr></div><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="Run_the_mission_and_analyze_the_output"></a>Run the mission and review the output</h2></div></div></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a name="N15832"></a>Review the simulated
+      measurements</h3></div></div></div><p>The script segment used to run the mission is shown below.</p><pre class="programlisting">BeginMissionSequence
+ 
+RunSimulator sim
+RunEstimator bat</pre><p>The first script line, <span class="guilabel">BeginMissionSequence</span>,
+      is a required command which indicates that the &ldquo;command&rdquo; section of the
+      GMAT script has begun. The second line of the script issues the
+      <span class="guilabel">RunSimulator</span> command with the
+      <span class="guilabel">Sim</span> Simulator resource, defined in the <a class="xref" href="Create_and_configure_simulator_and_batch_estimator_Objects.html#Create_the_simulator_object" title="Create the simulator object">Create the simulator object</a>
+      section, as an argument. This tells GMAT to perform the simulation
+      specified by the <span class="guilabel">sim</span> resource. The third line of
+      the script issues the <span class="guilabel">RunEstimator</span> command with the
+      <span class="guilabel">bat</span> batch estimator resource, defined in the <a class="xref" href="Create_and_configure_simulator_and_batch_estimator_Objects.html#Create_the_batch_estimator_object" title="Create the batch estimator object">Create the batch estimator object</a>
+      section, as an argument.</p><p>We have now completed all of our script segments. See the file,
+      <code class="filename">Tut_Inter_Spacecraft_Tracking.script</code>, in the GMAT
+      samples folder, for a listing of the entire script. We are now ready to
+      run the script. Hit the Save,Sync,Run button, (<span class="inlinemediaobject"><img src="../files/images/icons/Save_Sync_Run.png" height="10"></span>). The script will take a few moments to run as
+      GMAT simulates the data and then attempts the estimation.</p><p>Let&rsquo;s take a look at the output created. The file created,
+      <code class="filename">InterSpacecraft_Range_and_RangeRate.gmd</code>, was
+      specified in the <span class="guilabel">TrackingFileSet</span> resource,
+      <span class="guilabel">DSNsimData</span>, that we created in the <a class="xref" href="Define_the_types_of_measurements_to_be_simulated_and_their_associated_error_models.html" title="Define the types of measurements to be simulated and their associated error models">Define the types of measurements to be simulated and their
+    associated error models</a> section. The default directory, if none is
+      specified, is the GMAT installation &lsquo;output&rsquo; directory. Let&rsquo;s analyze
+      the contents of this &ldquo;GMAT Measurement Data&rdquo; or GMD file as shown
+      below.</p><pre class="programlisting" width="100">% GMAT Internal Measurement Data File
+
+25357.5003935185185185185190    Range    9029    TrackSat    ObservedSat    8.0745608409918510e+04
+25357.5003935185185185185190    RangeRate    9030    { TrackSat    ObservedSat    TrackSat }    2    10    1.2080451949525264e+00
+25357.5010879629629629629630    Range    9029    TrackSat    ObservedSat    8.0828956472718346e+04
+25357.5010879629629629629630    RangeRate    9030    { TrackSat    ObservedSat    TrackSat }    2    10    1.5166696445321948e+00
+</pre><p>The first line of the file is a comment line indicating that this
+      is a file containing measurement data stored in GMAT&rsquo;s internal format.
+      There are four lines of data representing range data at two successive
+      times and range-rate data at two successive times. The first line of
+      data which represents a two-way range measurement at the start of the
+      simulation at '10 Jun 2010 00:00:00.000 UTCG&rsquo; which corresponds to the
+      output TAI modified Julian day of 25357.5003935185... TAIMJD. The second
+      and third fields, Range and 9029, are just internal GMAT codes
+      indicating the use of two-way range data. The fourth field, TrackSat, is
+      the tracking spacecraft ID. This is the ID we gave the
+      <span class="guilabel">Spacecraft</span> <span class="guilabel">SimTrackSat</span> object.
+      The fifth field, ObservedSat, is the tracked spacecraft ID,which is the
+      ID we gave the <span class="guilabel">SimSat</span>
+      <span class="guilabel">Spacecraft</span> object that we created. The 6th field,
+      8.0745614120287588e+04, is the actual inter-spacecraft range observation
+      value in km. Note that your value will be different, since we've added
+      random noise to the data.</p><p>The second line of data represents a two-way range-rate
+      measurement at the start of the simulation at '10 Jun 2010 00:00:00.000
+      UTCG&rsquo; which corresponds to the output TAI modified Julian Day of
+      25357.5003935185... TAIMJD. This range-rate measurement is simultaneous
+      with the simulated range measurement. The second and third fields,
+      RangeRate and 9030, are just internal GMAT codes indicating the use of
+      the RangeRate observation type. The fields enclosed in curly braces
+      represent the measurement path - from spacecraft TrackSat, to spacecraft
+      ObservedSat, back to spacecraft TrackSat. The fifth field, 2, is an
+      integer which represents the Uplink Band of the signal from the
+      <span class="guilabel">Spacecraft</span>, <span class="guilabel">SimTrackSat</span>. The
+      designation 2 represents X-band. The sixth field, 10, is the Doppler
+      Count Interval (DCI) used to help define the Doppler measurement. This
+      is the value that we set when we created and configured the
+      <span class="guilabel">TrackingFileSet</span> <span class="guilabel">DSNsimData</span>
+      object in the <a class="xref" href="Define_the_types_of_measurements_to_be_simulated_and_their_associated_error_models.html" title="Define the types of measurements to be simulated and their associated error models">Define the types of measurements to be simulated and their
+    associated error models</a> section. Recall the following script
+      command,</p><div class="literallayout"><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;DSNsimData.SimDopplerCountInterval&nbsp;=&nbsp;10.0</p></div><p>The seventh field, 1.2080451949525264e+00, is the actual
+      range-rate observation value in km/sec. Again, your value will differ
+      from that appearing here.</p><p>The third line of data represents the second two-way range
+      measurement at '10 Jun 2010 00:01:00.000 UTCG&rsquo; which corresponds to the
+      output TAI modified Julian Day time of 25357.5010879629... TAIMJD. The
+      fourth line of data represents the second two-way range-rate measurement
+      at '10 Jun 2010 00:01:00.000 UTCG.&rsquo; All the following lines show the
+      simulated measurements at each minute during until the end of the
+      simulation, which was defined as '11 Jun 2010 00:00:00.000'. There will
+      be gaps in the simulated data corresponding to when the Earth blocks the
+      signal from the tracking spacecraft in geosynchronous orbit to the
+      target spacecraft in low-earth orbit.</p></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a name="N1589B"></a>Review the estimator
+      results</h3></div></div></div><p>Let&rsquo;s take a look at the output created from the
+      <span class="guilabel">BatchEstimator</span>. The file created,
+      <code class="filename">InterSpacecraft_Range_and_RangeRate.txt</code>, was
+      specified in the <span class="guilabel">TrackingFileSet</span> resource,
+      <span class="guilabel">simData</span>, that we created in the <a class="xref" href="Define_the_types_of_measurements_to_be_simulated_and_their_associated_error_models.html" title="Define the types of measurements to be simulated and their associated error models">Define the types of measurements to be simulated and their
+    associated error models</a> section. The default directory, if none is
+      specified, is the GMAT &lsquo;output&rsquo; directory. The contents of this file are
+      extensive, but can be summarized into three sections.</p><p>The first section is the header, which contains information about
+      the initial information that the estimator is provided, as well as
+      details about the objects involved in the estimation. A sample of this
+      is seen in the text below.</p><pre class="programlisting">********************  SPACECRAFT INITIAL CONDITIONS  *****************
+
+ Spacecraft State at Beginning of Estimation :
+
+ Spacecraft Name                            EstTrackSat                    EstSat 
+ ID                                            TrackSat               ObservedSat 
+                                                                                  
+ Epoch (UTC)                   10 Jun 2010 00:00:00.000  10 Jun 2010 00:00:00.000 
+ Coordinate System                        EarthMJ2000Eq             EarthMJ2000Eq 
+ X  (km)                                -36517.05118900              576.87000000 
+ Y  (km)                                -21083.12933400            -5701.14000000 
+ Z  (km)                                     0.00000000            -4170.59000000 
+ VX (km/s)                              -0.005964000000           -1.764508000000 
+ VY (km/s)                               0.010330000000            4.181288000000 
+ VZ (km/s)                               0.267968000000           -5.965790000000 
+ Cr                                            1.800000                  1.800000 
+ CrSigma                                  Not Estimated             Not Estimated 
+ Cd                                            2.200000                  2.200000 
+ CdSigma                                  Not Estimated             Not Estimated 
+ DryMass  (kg)                               850.000000                850.000000 
+ DragArea (m^2)                               15.000000                 15.000000 
+ SRPArea  (m^2)                                1.000000                  1.000000 </pre><p>The
+      second section is the iteration section, which contains a computed
+      estimation for each measurement and the resulting residual. At the end
+      of each iteration is information on the progress of the batch
+      estimation, detailing whether or not the solution is converging and how
+      the iteration compares to previous iterations.The final section contains
+      the estimated solution, with the estimated Cartesian coordinates and the
+      covariance matrix for the solution.</p></div></div><div class="navfooter"><hr><table summary="Navigation footer" width="100%"><tr><td align="left" width="40%"><a accesskey="p" href="Create_and_configure_simulator_and_batch_estimator_Objects.html">Prev</a>&nbsp;</td><td align="center" width="20%"><a accesskey="u" href="Tut_Simulate_and_Estimate_Inter_Spacecraft_DSN_Range_and_Doppler_Data.html">Up</a></td><td align="right" width="40%">&nbsp;<a accesskey="n" href="ch16s07.html">Next</a></td></tr><tr><td valign="top" align="left" width="40%">Create and configure the simulator and batch estimator
+    objects&nbsp;</td><td align="center" width="20%"><a accesskey="h" href="index.html">Home</a></td><td valign="top" align="right" width="40%">&nbsp;References</td></tr></table></div></body></html>

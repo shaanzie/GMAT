@@ -1,0 +1,100 @@
+<html><head><META http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"><title>Transmitter</title><link href="../files/style.css" type="text/css" rel="stylesheet"><meta content="DocBook XSL Stylesheets V1.78.1" name="generator"><link rel="home" href="index.html" title="General Mission Analysis Tool (GMAT)"><link rel="up" href="ch21.html#N27B20" title="Resources"><link rel="prev" href="TrackingFileSet.html" title="TrackingFileSet"><link rel="next" href="Transponder.html" title="Transponder"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="navheader"><table summary="Navigation header" width="100%"><tr><th align="center" colspan="3">Transmitter</th></tr><tr><td align="left" width="20%"><a accesskey="p" href="TrackingFileSet.html">Prev</a>&nbsp;</td><th align="center" width="60%">Resources</th><td align="right" width="20%">&nbsp;<a accesskey="n" href="Transponder.html">Next</a></td></tr></table><hr></div><div class="refentry"><a name="Transmitter"></a><div class="titlepage"></div><a name="N2A5C3" class="indexterm"></a><div class="refnamediv"><h2><span class="refentrytitle">Transmitter</span></h2><p>Transmitter &mdash; Defines the electronics hardware, attached to a
+    <span class="guilabel">GroundStation</span> or <span class="guilabel">Spacecraft</span>
+    resource, that transmits an RF signal.</p></div><div class="refsection"><a name="N2A5DA"></a><h2>Description</h2><p>A ground station needs a <span class="guilabel">Transmitter</span> to
+    transmit the RF signal to both user spacecraft and to navigation
+    spacecraft such as TDRS. A <span class="guilabel">Transmitter</span> is assigned on
+    the <span class="guilabel">AddHardware</span> list of an instance of a
+    <span class="guilabel">GroundStation</span>. A <span class="guilabel">Transmitter</span> may
+    also be assigned on a TDRS user spacecraft to specify or estimate
+    properties of the user-to-TDRS transmit frequency.</p><p>See Also <a class="xref" href="GroundStation.html" title="GroundStation"><span class="refentrytitle">GroundStation</span></a>, <a class="xref" href="Antenna.html" title="Antenna"><span class="refentrytitle">Antenna</span></a></p></div><div class="refsection"><a name="N2A5F5"></a><h2>Fields</h2><div class="informaltable"><table border="1"><colgroup><col width="25%"><col width="75%"></colgroup><thead><tr><th>Field</th><th>Description</th></tr></thead><tbody><tr><td><span class="guilabel">EpochFormat</span></td><td><p>This field allows you to set the type of the epoch
+            that you choose to enter for the
+            <span class="guilabel">ReferenceEpoch</span>. This field cannot be modified
+            in the Mission Sequence.</p><div class="variablelist"><table border="0" class="variablelist"><colgroup><col valign="top" align="left"><col></colgroup><tbody><tr><td><p><span class="term">Data Type</span></p></td><td><p>Enumeration</p></td></tr><tr><td><p><span class="term">Allowed Values</span></p></td><td><p>Any of the following epoch formats:<span class="guilabel">
+                    UTCGregorian</span><span class="guilabel">,
+                    UTCModJulian</span>,<span class="guilabel">
+                    TAIGregorian</span>,<span class="guilabel">
+                    TAIModJulian</span>,<span class="guilabel">
+                    TTGregorian</span>,<span class="guilabel">
+                    TTModJulian</span>,<span class="guilabel"> A1Gregorian</span>,
+                    <span class="guilabel">A1ModJulian</span></p></td></tr><tr><td><p><span class="term">Access</span></p></td><td><p>Set</p></td></tr><tr><td><p><span class="term">Default Value</span></p></td><td><p><span class="guilabel">UTCGregorian</span></p></td></tr><tr><td><p><span class="term">Units</span></p></td><td><p>N/A</p></td></tr><tr><td><p><span class="term">Interfaces</span></p></td><td><p>GUI, script</p></td></tr></tbody></table></div></td></tr><tr><td><span class="guilabel">Frequency</span></td><td><p>Transmit frequency</p><div class="variablelist"><table border="0" class="variablelist"><colgroup><col valign="top" align="left"><col></colgroup><tbody><tr><td><p><span class="term">Data Type</span></p></td><td><p>Real</p></td></tr><tr><td><p><span class="term">Allowed Values</span></p></td><td><p>Real &gt;= 0</p></td></tr><tr><td><p><span class="term">Access</span></p></td><td><p>set</p></td></tr><tr><td><p><span class="term">Default Value</span></p></td><td><p><span class="guilabel">2000</span></p></td></tr><tr><td><p><span class="term">Units</span></p></td><td><p>MHz</p></td></tr><tr><td><p><span class="term">Interfaces</span></p></td><td><p>script</p></td></tr></tbody></table></div></td></tr><tr><td><span class="guilabel">FrequencyBand</span></td><td><p>Transmit frequency band. This parameter is only used
+            for measurement simulation. The frequency band for estimation
+            (when applicable) is specified in the GMD tracking data
+            file.</p><p>This parameter is ignored when simulating DSN
+            data types. For simulation of DSN data, the frequency band is
+            inferred from the <span class="guilabel">Frequency</span> parameter
+            according to DSN specifications for frequency ranges. If set to
+            <span class="guilabel">None</span>, GMAT will attempt to infer the
+            frequency band based on the Transmitter
+            <span class="guilabel">Frequency</span>.</p><div class="variablelist"><table border="0" class="variablelist"><colgroup><col valign="top" align="left"><col></colgroup><tbody><tr><td><p><span class="term">Data Type</span></p></td><td><p>String</p></td></tr><tr><td><p><span class="term">Allowed Values</span></p></td><td><p>'None', 'C', 'S', 'X', 'K'</p></td></tr><tr><td><p><span class="term">Access</span></p></td><td><p>set</p></td></tr><tr><td><p><span class="term">Default Value</span></p></td><td><p><span class="guilabel">None</span></p></td></tr><tr><td><p><span class="term">Units</span></p></td><td><p>NA</p></td></tr><tr><td><p><span class="term">Interfaces</span></p></td><td><p>script</p></td></tr></tbody></table></div></td></tr><tr><td><span class="guilabel">FrequencyBias</span></td><td><p>Coefficients of the transmitter frequency bias model.
+            The coefficients in the <span class="guilabel">FrequencyBias</span> list
+            specify a polynomial frequency bias <span class="emphasis"><em>f_bias(t)</em></span>
+            such that <span class="emphasis"><em>f_bias(t) = C0 + C1*(t - t0) + C2*(t -
+            t0)^2</em></span>+<span class="emphasis"><em>etc...</em></span>where
+            <span class="emphasis"><em>t0</em></span> is the ReferenceEpoch and
+            <span class="emphasis"><em>t</em></span> is the measurement or integration time. The
+            number of coefficients in this list specifies the order of the
+            polynomial.</p><p>The instantaneous transmitter frequency is
+            given by <span class="emphasis"><em>f(t) = F + f_bias(t)</em></span>, where
+            <span class="emphasis"><em>F</em></span> is the value of the
+            <span class="guilabel">Transmitter</span> <span class="guilabel">Frequency</span>
+            parameter.</p><div class="variablelist"><table border="0" class="variablelist"><colgroup><col valign="top" align="left"><col></colgroup><tbody><tr><td><p><span class="term">Data Type</span></p></td><td><p>Real array</p></td></tr><tr><td><p><span class="term">Allowed Values</span></p></td><td><p>Any real number</p></td></tr><tr><td><p><span class="term">Access</span></p></td><td><p>set</p></td></tr><tr><td><p><span class="term">Default Value</span></p></td><td><p><span class="guilabel">[ 0.0 ]</span></p></td></tr><tr><td><p><span class="term">Units</span></p></td><td><p>Hz, Hz/sec, Hz/sec^2 , ...</p></td></tr><tr><td><p><span class="term">Interfaces</span></p></td><td><p>script</p></td></tr></tbody></table></div></td></tr><tr><td><span class="guilabel">PrimaryAntenna</span></td><td><p><span class="guilabel">Antenna</span> resource used by
+            <span class="guilabel">GroundStation</span> resource to transmit a
+            signal</p><div class="variablelist"><table border="0" class="variablelist"><colgroup><col valign="top" align="left"><col></colgroup><tbody><tr><td><p><span class="term">Data Type</span></p></td><td><p><span class="guilabel">Antenna</span> Object</p></td></tr><tr><td><p><span class="term">Allowed Values</span></p></td><td><p>Any <span class="guilabel">Antenna</span> object</p></td></tr><tr><td><p><span class="term">Access</span></p></td><td><p>set</p></td></tr><tr><td><p><span class="term">Default Value</span></p></td><td><p><span class="guilabel">None</span></p></td></tr><tr><td><p><span class="term">Units</span></p></td><td><p>N/A</p></td></tr><tr><td><p><span class="term">Interfaces</span></p></td><td><p>script</p></td></tr></tbody></table></div></td></tr><tr><td><span class="guilabel">ReferenceEpoch</span></td><td><p>Anchor epoch for the
+            <span class="guilabel">FrequencyBias</span> polynomial. The coefficients in
+            the <span class="guilabel">FrequencyBias</span> list specify a polynomial
+            frequency bias <span class="emphasis"><em>f_bias(t)</em></span> such that
+            <span class="emphasis"><em>f_bias(t) = C0 + C1*(t - t0) + C2*(t - t0)^2
+            </em></span>+<span class="emphasis"><em> etc... </em></span>where
+            <span class="emphasis"><em>t0</em></span> is the ReferenceEpoch and
+            <span class="emphasis"><em>t</em></span> is the measurement or integration time. The
+            default value of <span class="guilabel">FromSpacecraft</span> assigns
+            <span class="guilabel">ReferenceEpoch</span> the value of the spacecraft
+            initial epoch.</p><div class="variablelist"><table border="0" class="variablelist"><colgroup><col valign="top" align="left"><col></colgroup><tbody><tr><td><p><span class="term">Data Type</span></p></td><td><p>String</p></td></tr><tr><td><p><span class="term">Allowed Values</span></p></td><td><p>User-defined epoch or default value</p></td></tr><tr><td><p><span class="term">Access</span></p></td><td><p>set</p></td></tr><tr><td><p><span class="term">Default Value</span></p></td><td><p><span class="guilabel">FromSpacecraft</span></p></td></tr><tr><td><p><span class="term">Units</span></p></td><td><p>N/A</p></td></tr><tr><td><p><span class="term">Interfaces</span></p></td><td><p>script</p></td></tr></tbody></table></div></td></tr><tr><td><span class="guilabel">SolveFors</span></td><td><p>List of parameters to estimate. If estimation of
+            FrequencyBias is specified, GMAT will estimate the frequency bias
+            coefficients to the order determined by the size of the
+            FrequencyBias array.</p><div class="variablelist"><table border="0" class="variablelist"><colgroup><col valign="top" align="left"><col></colgroup><tbody><tr><td><p><span class="term">Data Type</span></p></td><td><p>String</p></td></tr><tr><td><p><span class="term">Allowed Values</span></p></td><td><p>{} or FrequencyBias</p></td></tr><tr><td><p><span class="term">Access</span></p></td><td><p>set</p></td></tr><tr><td><p><span class="term">Default Value</span></p></td><td><p><span class="guilabel">{}</span></p></td></tr><tr><td><p><span class="term">Units</span></p></td><td><p>N/A</p></td></tr><tr><td><p><span class="term">Interfaces</span></p></td><td><p>script</p></td></tr></tbody></table></div></td></tr></tbody></table></div></div><div class="refsection"><a name="N2A7AC"></a><h2>Remarks</h2><div class="refsection"><a name="N2A7AF"></a><h3>Transmitter Frequency use in Simulation and Estimation</h3><p>A transmitter may be attached to a
+      <span class="guilabel">GroundStation</span> or <span class="guilabel">Spacecraft</span>
+      resource. As discussed in the <span class="guilabel">RunSimulator</span> help,
+      for the case where a ramp table is not used, the transmit frequency is
+      used directly to calculate the DSN range and Doppler measurements. For
+      both simulation and estimation, if a ramp table is specified on the
+      relevant <span class="guilabel">TrackingFileSet</span>, the frequency profile
+      specified in the ramp table is used and the Transmitter
+      <span class="guilabel">Frequency</span> and <span class="guilabel">FrequencyBand</span>
+      are ignored.</p><p>For simulation of TDRS measurements, a Transmitter may be attached
+      to the TDRS user spacecraft to specify the user-to-TDRS transmit
+      frequency for measurement simulation. If no Transmitter is attached to
+      the TDRS user, a default frequency of 2000 MHz is used. When estimating,
+      the user-to-TDRS transmit frequency is obtained from the GMD tracking
+      data file, and the Transmitter <span class="guilabel">Frequency</span> and
+      <span class="guilabel">FrequencyBand</span> are ignored.</p></div></div><div class="refsection"><a name="N2A7CE"></a><h2>Examples</h2><div class="informalexample"><p>Create and configure a <span class="guilabel">Transmitter</span>
+      object</p><pre class="programlisting">Create Antenna DSNAntenna;
+Create Transmitter Transmitter1;
+
+Transmitter1.PrimaryAntenna = DSNAntenna;
+Transmitter1.Frequency = 7186.3; 
+
+Create GroundStation DSN
+DSN.AddHardware = {Transmitter1};
+
+BeginMissionSequence;</pre></div><div class="informalexample"><p>Create and configure a <span class="guilabel">Transmitter</span> for
+      estimation of a linear frequency bias. The
+      <span class="guilabel">FrequencyBias</span> array has two elements, indicating
+      that the frequency bias polynomial has only a constant C0 and linear C1
+      term. In this case (estimation) the nominal value of the frequency is
+      obtained from the GMD file (not shown here). For simulation, you should
+      specify the nominal frequency on the Transmitter using the
+      <span class="guilabel">Frequency</span> parameter.</p><pre class="programlisting">Create Spacecraft Sat
+Create Antenna HGA;
+Create Transmitter Transmitter1;
+
+Transmitter1.PrimaryAntenna = HGA
+Transmitter1.FrequencyBand  = 'S'
+Transmitter1.EpochFormat    = 'UTCGregorian'
+Transmitter1.ReferenceEpoch = '15 Nov 2018 12:00:00.000'
+Transmitter1.FrequencyBias  = [0.0, 0.0] 
+Transmitter1.SolveFors      = {FrequencyBias}
+
+Sat.AddHardware = {Transmitter1, HGA}
+
+BeginMissionSequence;</pre></div></div></div><div class="navfooter"><hr><table summary="Navigation footer" width="100%"><tr><td align="left" width="40%"><a accesskey="p" href="TrackingFileSet.html">Prev</a>&nbsp;</td><td align="center" width="20%"><a accesskey="u" href="ch21.html#N27B20">Up</a></td><td align="right" width="40%">&nbsp;<a accesskey="n" href="Transponder.html">Next</a></td></tr><tr><td valign="top" align="left" width="40%">TrackingFileSet&nbsp;</td><td align="center" width="20%"><a accesskey="h" href="index.html">Home</a></td><td valign="top" align="right" width="40%">&nbsp;Transponder</td></tr></table></div></body></html>
